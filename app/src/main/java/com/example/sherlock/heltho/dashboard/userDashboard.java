@@ -1,7 +1,12 @@
 package com.example.sherlock.heltho.dashboard;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,10 +20,14 @@ import com.example.sherlock.heltho.R;
 public class userDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    CustomTabHelper mCustomTabHelper;
+    private Uri uri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
+        uri = Uri.parse("www.facebook.com");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -68,6 +77,7 @@ public class userDashboard extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragment = null;
 
         if (id == R.id.home) {
             // Handle the camera action
@@ -83,9 +93,24 @@ public class userDashboard extends AppCompatActivity
 
         }
         else if (id == R.id.visit) {
+            mCustomTabHelper = new CustomTabHelper();
+            if (mCustomTabHelper.getPackageName(this).size() != 0) {
+                CustomTabsIntent customTabsIntent =
+                        new CustomTabsIntent.Builder()
+                                .build();
+                customTabsIntent.intent.setPackage(mCustomTabHelper.getPackageName(this).get(0));
+                customTabsIntent.launchUrl(this, uri);
+            } else {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("www.facebook.com")));
+            }
 
         }
 
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame, fragment);
+            ft.commit();
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
