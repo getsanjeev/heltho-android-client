@@ -9,13 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.example.sherlock.heltho.R;
 import com.example.sherlock.heltho.dashboard.userDashboard;
 import com.example.sherlock.heltho.service.retrofit_service;
-
 import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +31,6 @@ public class signUp extends AppCompatActivity {
     private String cnfmPasswordUser;
     private Button register_btn;
     private ProgressDialog dialog;
-    private ImageView image_adzippy;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,14 +40,13 @@ public class signUp extends AppCompatActivity {
         password_et = (EditText) findViewById(R.id.pass_edit);
         cnfm_password_et = (EditText) findViewById(R.id.cnfmpass_edit);
         register_btn = (Button) findViewById(R.id.sign_up);
-        image_adzippy  = (ImageView)findViewById(R.id.image_adzippy);
         dialog = new ProgressDialog(signUp.this);
         dialog.setMessage("Loading...");
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.show();
-                registerUser();
+                //registerUser();
                 dialog.dismiss();
                 startActivity(new Intent(signUp.this,userDashboard.class));
             }
@@ -83,10 +78,6 @@ public class signUp extends AppCompatActivity {
 
     private void sendCredentials(String contactEmail, final String password) {
         final String usedID;
-        int credentialTypeIsEmail = checkEmailOrMobile(contactEmail);
-        if (credentialTypeIsEmail == 3) {
-            Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
-        }
         usedID = contactEmail;
             Call<Response> callback =  new retrofit_service().get_service().register_user("register.php",usedID,password);
             callback.enqueue(new Callback<Response>() {
@@ -109,18 +100,4 @@ public class signUp extends AppCompatActivity {
             });
         }
 
-    private int checkEmailOrMobile(String mobileOrEmail) {
-        boolean phone = android.util.Patterns.PHONE.matcher(mobileOrEmail.trim()).matches();
-        boolean email = android.util.Patterns.PHONE.matcher(mobileOrEmail.trim()).matches();
-        if (phone && email || !phone && !email){
-            Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
-            return 3;
-        }
-
-        else {
-            if (email) {
-                return 0;
-            } else return 1;
-        }
-    }
 }

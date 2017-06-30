@@ -25,11 +25,9 @@ public class splash_screen extends Activity {
                     e.getStackTrace();
                 } finally {
                     SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
-                    if (mSharedPreferences.contains("registered")) {
-                        if (mSharedPreferences.getBoolean("loggedIn", true) == true)
+                        if (mSharedPreferences.getBoolean("loggedIn", false))
                             startActivity(new Intent(splash_screen.this, userDashboard.class));
                         else startActivity(new Intent(splash_screen.this,logIn.class));
-                    } else startActivity(new Intent(splash_screen.this, logIn.class));
                     finish();
                 }
             }
