@@ -89,7 +89,7 @@ public class userDashboard extends AppCompatActivity
         } else if (id == R.id.favourite) {
 
         } else if (id == R.id.profile) {
-
+            fragment = new profilePage();
         } else if (id == R.id.logout) {
 
         } else if (id == R.id.share) {
