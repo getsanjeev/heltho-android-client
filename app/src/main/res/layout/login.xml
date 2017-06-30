@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradiant">
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:contentDescription="Welcome to Adzippy"
         android:layout_marginRight="15dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/signup_ad"
+        android:src="@drawable/signup_heltho"
         android:id="@+id/image_adzippy"
         android:padding="10dp"
         />
@@ -26,7 +26,7 @@
         android:id="@+id/kk"
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
-        android:paddingTop="50dp">
+        android:paddingTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
