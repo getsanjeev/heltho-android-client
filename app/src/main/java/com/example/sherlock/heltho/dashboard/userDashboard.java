@@ -24,6 +24,7 @@ public class userDashboard extends AppCompatActivity
     CustomTabHelper mCustomTabHelper;
     private Uri uri;
     private String HELTHO_LINK = "https://github.com/getsanjeev";
+    private static final String GOOGLE_PLAY_LINK = "https://play.google.com/store/apps/details?id=com.plumbum.aapu.household&hl=en";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,11 @@ public class userDashboard extends AppCompatActivity
         } else if (id == R.id.logout) {
 
         } else if (id == R.id.share) {
+            Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT,
+                    getString(R.string.share_msg) + " " + GOOGLE_PLAY_LINK);
+            startActivity(Intent.createChooser(shareIntent, "Share with others"));
 
         }
         else if (id == R.id.visit) {

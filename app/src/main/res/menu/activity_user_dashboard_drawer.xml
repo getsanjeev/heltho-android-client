@@ -8,7 +8,7 @@
             android:title="Home" />
         <item
             android:id="@+id/orders"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/shop"
             android:title="My Orders" />
         <item
             android:id="@+id/favourite"
@@ -20,7 +20,7 @@
             android:title="My Profile" />
         <item
             android:id="@+id/logout"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/logout"
             android:title="Logout" />
     </group>
 
