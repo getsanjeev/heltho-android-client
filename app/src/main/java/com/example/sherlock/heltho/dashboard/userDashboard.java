@@ -17,17 +17,19 @@ import android.view.MenuItem;
 
 import com.example.sherlock.heltho.R;
 
+
 public class userDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CustomTabHelper mCustomTabHelper;
     private Uri uri;
+    private String HELTHO_LINK = "https://github.com/getsanjeev";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
-        uri = Uri.parse("www.facebook.com");
+        uri = Uri.parse(HELTHO_LINK);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -101,9 +103,8 @@ public class userDashboard extends AppCompatActivity
                 customTabsIntent.intent.setPackage(mCustomTabHelper.getPackageName(this).get(0));
                 customTabsIntent.launchUrl(this, uri);
             } else {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("www.facebook.com")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(HELTHO_LINK)));
             }
-
         }
 
         if (fragment != null) {
