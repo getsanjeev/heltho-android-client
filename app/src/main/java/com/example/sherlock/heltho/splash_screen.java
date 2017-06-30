@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.sherlock.heltho.dashboard.userDashboard;
 import com.example.sherlock.heltho.login.logIn;
 
 
@@ -19,16 +20,14 @@ public class splash_screen extends Activity {
             @Override
             public void run() {
                 try {
-                    Log.e("in splash","hello");
-                    sleep(2000);
+                    sleep(3000);
                 } catch (Exception e) {
                     e.getStackTrace();
                 } finally {
                     SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
                     if (mSharedPreferences.contains("registered")) {
-
-                        if (mSharedPreferences.getBoolean("loggedIn", true))
-                            startActivity(new Intent(splash_screen.this, logIn.class));
+                        if (mSharedPreferences.getBoolean("loggedIn", true) == true)
+                            startActivity(new Intent(splash_screen.this, userDashboard.class));
                         else startActivity(new Intent(splash_screen.this,logIn.class));
                     } else startActivity(new Intent(splash_screen.this, logIn.class));
                     finish();

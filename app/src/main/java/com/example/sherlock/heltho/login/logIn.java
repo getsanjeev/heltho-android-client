@@ -3,12 +3,9 @@ package com.example.sherlock.heltho.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
+import com.example.sherlock.heltho.data.prefUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,13 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.sanjeev.adzippy.data.prefUtils;
-import com.example.sanjeev.adzippy.data.userData;
-import com.example.sanjeev.adzippy.drawer.userDashBoard;
-import com.example.sanjeev.adzippy.sign_up.signUp;
 import com.example.sherlock.heltho.R;
-import com.facebook.AccessToken;
+import com.example.sherlock.heltho.dashboard.userDashboard;
+import com.example.sherlock.heltho.data.userData;
+import com.example.sherlock.heltho.signup.signUp;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -34,15 +28,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Set;
-
-import retrofit2.http.Url;
 
 /**
  * Created by sanjeev on 2/4/17.
@@ -73,7 +58,7 @@ public class logIn extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
         fbloginButton = (LoginButton) findViewById(R.id.fb_login_button);
         if (prefUtils.getCurrentUser(logIn.this) != null) {
-            Intent homeIntent = new Intent(logIn.this, userDashBoard.class);
+            Intent homeIntent = new Intent(logIn.this, userDashboard.class);
             startActivity(homeIntent);
             finish();
         }
@@ -89,17 +74,16 @@ public class logIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(logIn.this, signUp.class));
+                finish();
             }
         });
 
         zipLogIn_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences", MODE_PRIVATE);
-                if (userID_et.getText().toString().equals(mSharedPreferences.getString("userID", "qwerty"))
-                        && userPassword_et.getText().toString().equals(mSharedPreferences.getString("userPassword", "asdf"))) {
-                    startActivity(new Intent(logIn.this, userDashBoard.class));
-                }
+                setLoggedIn();
+                startActivity(new Intent(logIn.this, userDashboard.class));
+                finish();
             }
         });
 
@@ -118,6 +102,12 @@ public class logIn extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void setLoggedIn(){
+        SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putBoolean("loggedIn",true);
     }
 
     private FacebookCallback<LoginResult> mCallBack = new FacebookCallback<LoginResult>() {
@@ -152,8 +142,9 @@ public class logIn extends AppCompatActivity {
                                 e.printStackTrace();
                                 Log.e("Getting","Exception");
                             }
-                            Toast.makeText(logIn.this, "welcome " + myUserData.first_name, Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(logIn.this, userDashBoard.class);
+                            Toast.makeText(logIn.this, "Welcome " + myUserData.first_name, Toast.LENGTH_LONG).show();
+                            setLoggedIn();
+                            Intent intent = new Intent(logIn.this, userDashboard.class);
                             startActivity(intent);
                             finish();
                         }

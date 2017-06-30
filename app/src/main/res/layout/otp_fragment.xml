@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c5c8cc">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Resend OTP"
+            android:textColor="#fff"
+            android:id="@+id/request_otp"
+            android:textAlignment="center"
+            android:background="@color/colorPrimary"
+            android:layout_gravity="center_horizontal"/>
+        <EditText
+            android:id="@+id/cnfm_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter OTP"
+            android:textAlignment="center"
+            android:textColor="#143160"
+            android:inputType="numberPassword"
+            android:layout_marginTop="120dp"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="Verify"
+            android:textColor="#fff"
+            android:id="@+id/submit"
+            android:background="@color/colorPrimary"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
