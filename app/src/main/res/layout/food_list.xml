@@ -85,6 +85,7 @@
                     android:layout_height="match_parent"
                     android:text="Naa! Suggest more"
                     android:background="#fff"
+                    android:id="@+id/more"
                     android:textAlignment="center"
                     android:textColor="#000"
                     android:layout_below="@id/list_view_history"/>

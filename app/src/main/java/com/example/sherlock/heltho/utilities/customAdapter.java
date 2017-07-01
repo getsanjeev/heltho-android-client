@@ -15,41 +15,41 @@ import com.example.sherlock.heltho.R;
 
 public class customAdapter  extends BaseAdapter {
     private Context context;
-    private final String[] reason_for_transfer_info;
-    private final String[] date_time_info;
+    private final String[] dishName;
+    private final String[] restaurantName;
     private final String[] money_info;
-    private final String[] transaction_id_info;
+    private final String[] deliveryTime;
 
     public customAdapter(Context context, String[] transfer_details,
-                         String [] date_time_info,String[]money, String[] transactionID) {
+                         String [] restaurantName,String[]money, String[] transactionID) {
         this.context = context;
-        this.reason_for_transfer_info = transfer_details;
-        this.date_time_info = date_time_info;
+        this.dishName = transfer_details;
+        this.restaurantName = restaurantName;
         this.money_info = money;
-        this.transaction_id_info = transactionID;
+        this.deliveryTime = transactionID;
     }
 
-    TextView reason_for_transfer;
-    TextView transaction_id;
-    TextView date_time;
+    TextView dish_name;
+    TextView restaurant_name;
+    TextView delivery_time;
     TextView money;
 
     @Override
     public int getCount() {
-        return transaction_id_info.length;
+        return deliveryTime.length;
     }
 
     @Override
     public View getView(final int position, final View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.my_food_list_view_item, parent, false);
-        reason_for_transfer = (TextView)rowView.findViewById(R.id.dish_name);
-        date_time = (TextView)rowView.findViewById(R.id.restaurant_name);
-        transaction_id  =(TextView)rowView.findViewById(R.id.delivery_time);
+        dish_name = (TextView)rowView.findViewById(R.id.dish_name);
+        restaurant_name = (TextView)rowView.findViewById(R.id.restaurant_name);
+        delivery_time  =(TextView)rowView.findViewById(R.id.delivery_time);
         money = (TextView)rowView.findViewById(R.id.money_transacted);
-        reason_for_transfer.setText(reason_for_transfer_info[position]);
-        date_time.setText("Time: "+date_time_info[position]);
-        transaction_id.setText("Transaction ID: "+transaction_id_info[position]);
+        dish_name.setText(dishName[position]);
+        restaurant_name.setText("Order from: "+restaurantName[position]);
+        delivery_time.setText("Expected Delivery: "+deliveryTime[position]);
         money.setText(money_info[position]);
         return rowView;
     }
