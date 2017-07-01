@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#e6e6e6">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:layout_marginBottom="5dp"
+        >
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#3f51b5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/pizza-icon"
+            android:id="@+id/pizza_symbol"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Paid for Order"
+            android:layout_toRightOf="@+id/pizza_symbol"
+            android:textColor="#000"
+            android:id="@+id/dish_name"
+            android:padding="10dp"
+            android:textStyle="normal"
+            android:textSize="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25 ₹"
+            android:layout_toRightOf="@+id/dish_name"
+            android:layout_alignParentRight="true"
+            android:textAlignment="textEnd"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:id="@+id/money_transacted"
+            android:textStyle="bold"
+            android:padding="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/money_transacted"
+            android:layout_toRightOf="@id/pizza_symbol"
+            android:text="Transaction ID #3345678910"
+            android:id="@+id/restaurant_name"
+            android:layout_marginLeft="27dp"
+            android:textSize="12dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/restaurant_name"
+            android:layout_toRightOf="@id/pizza_symbol"
+            android:text="March 04 15:33"
+            android:id="@+id/delivery_time"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="10dp"
+            android:padding="3dp"
+            android:textSize="12dp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
