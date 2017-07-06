@@ -82,8 +82,6 @@ public class profilePage extends Fragment implements View.OnClickListener {
         designation_btn.setOnClickListener(this);
         identity_btn.setOnClickListener(this);
         vehicle_btn.setOnClickListener(this);
-
-
         address_tv = (TextView) view.findViewById(R.id.address_tv);
         designation_tv = (TextView) view.findViewById(R.id.work_tv);
         bank_tv = (TextView) view.findViewById(R.id.bank_tv);
@@ -95,7 +93,7 @@ public class profilePage extends Fragment implements View.OnClickListener {
         edit_dp = (ImageView) view.findViewById(R.id.edit_dp);
         user_profile_pic = (CircularImageView) view.findViewById(R.id.user_profile_photo);
 
-        if((1==2)&& !userData.profile_pic_url.equals(null) ){
+        if(!userData.profile_pic_url.equals(null) ){
             Picasso.with(getActivity()).setIndicatorsEnabled(true);
             Picasso.with(getActivity()).load(userData.profile_pic_url).
                     placeholder(R.drawable.com_facebook_profile_picture_blank_portrait)

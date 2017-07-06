@@ -1,5 +1,4 @@
 package com.example.sherlock.heltho.dashboard;
-
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -92,6 +91,7 @@ public class userDashboard extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.home) {
+
             // Handle the camera action
         } else if (id == R.id.orders) {
 
@@ -107,8 +107,8 @@ public class userDashboard extends AppCompatActivity
             shareIntent.putExtra(Intent.EXTRA_TEXT,
                     getString(R.string.share_msg) + " " + GOOGLE_PLAY_LINK);
             startActivity(Intent.createChooser(shareIntent, "Share with others"));
-
         }
+
         else if (id == R.id.visit) {
             mCustomTabHelper = new CustomTabHelper();
             if (mCustomTabHelper.getPackageName(this).size() != 0) {

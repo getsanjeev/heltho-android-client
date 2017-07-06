@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
-        android:layout_marginBottom="5dp"
-        >
+        android:layout_marginBottom="5dp">
+
         <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -20,22 +20,25 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/pizzaicon"
             android:id="@+id/pizza_symbol"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Paid for Order"
+            android:text="Dish Name"
             android:layout_toRightOf="@+id/pizza_symbol"
             android:textColor="#000"
+            android:maxLines="2"
+            android:minLines="1"
             android:id="@+id/dish_name"
             android:padding="10dp"
             android:textStyle="normal"
             android:textSize="15dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="25 ₹"
-            android:layout_toRightOf="@+id/dish_name"
             android:layout_alignParentRight="true"
             android:textAlignment="textEnd"
             android:textColor="#000"
@@ -43,6 +46,7 @@
             android:id="@+id/money_transacted"
             android:textStyle="bold"
             android:padding="10dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,6 +56,7 @@
             android:id="@+id/restaurant_name"
             android:layout_marginLeft="27dp"
             android:textSize="12dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
