@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,7 +26,6 @@ public class searchResultActivity extends AppCompatActivity {
     ListView lv;
     Button see_more;
     int count;
-    ImageView ad;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,16 +33,19 @@ public class searchResultActivity extends AppCompatActivity {
         setContentView(R.layout.food_list);
         count = 0;
         lv = (ListView)findViewById(R.id.list_view_history);
-        ad = (ImageView)findViewById(R.id.current);
         see_more = (Button)findViewById(R.id.more);
-        Picasso.with(this).load("https://dzh2xn6ml8v5t.cloudfront.net/65814/300x250-hotel-new_1.jpg").
-                placeholder(R.drawable.com_facebook_profile_picture_blank_portrait)
-                .error(R.drawable.userdp).into(ad);
         handleIntent(getIntent());
                 see_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadMoreSuggestions();
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(searchResultActivity.this,oneDishParticulars.class));
             }
         });
     }

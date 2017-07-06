@@ -10,21 +10,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/current"
-                android:padding="8dp"
-                android:src="@drawable/ad_in_search"
-                android:adjustViewBounds="true"
-                android:scaleType="fitStart"/>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_below="@+id/current"
                 android:layout_marginTop="5dp"
                 android:id="@+id/select_duration_for_history"
                 android:background="#fff">

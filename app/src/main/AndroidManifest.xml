@@ -42,13 +42,14 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
         <activity android:name=".login.logIn" />
         <activity android:name=".signup.otpFragment"/>
         <activity android:name=".signup.signUp"/>
+        <activity android:name=".dashboard.oneDishParticulars"
+            android:theme="@style/sliderActivity"/>
         <activity
             android:name=".dashboard.userDashboard"
             android:theme="@style/AppTheme.NoActionBar"
