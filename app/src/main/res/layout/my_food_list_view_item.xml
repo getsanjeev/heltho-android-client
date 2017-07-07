@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
+        android:padding="10dp"
         android:layout_marginBottom="5dp">
 
         <com.mikhaellopez.circularimageview.CircularImageView
@@ -21,36 +22,44 @@
             android:src="@drawable/pizzaicon"
             android:id="@+id/pizza_symbol"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="Dish Name"
-            android:layout_toRightOf="@+id/pizza_symbol"
-            android:textColor="#000"
-            android:maxLines="2"
-            android:minLines="1"
-            android:id="@+id/dish_name"
-            android:padding="10dp"
-            android:textStyle="normal"
-            android:textSize="15dp"/>
+            android:id="@+id/ly_dish_money"
+            android:layout_toRightOf="@+id/pizza_symbol">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Dish Name"
+                android:layout_weight="0.7"
+                android:maxLines="2"
+                android:textColor="#000"
+                android:id="@+id/dish_name"
+                android:padding="10dp"
+                android:textStyle="normal"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:text="25 ₹"
+                android:textAlignment="textEnd"
+                android:textColor="#000"
+                android:textSize="15dp"
+                android:id="@+id/money_transacted"
+                android:textStyle="bold"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="25 ₹"
-            android:layout_alignParentRight="true"
-            android:textAlignment="textEnd"
-            android:textColor="#000"
-            android:textSize="15dp"
-            android:id="@+id/money_transacted"
-            android:textStyle="bold"
-            android:padding="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/money_transacted"
+            android:layout_below="@+id/ly_dish_money"
             android:layout_toRightOf="@id/pizza_symbol"
             android:text="Transaction ID #3345678910"
             android:id="@+id/restaurant_name"
