@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scroll"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -19,6 +20,9 @@
                 android:id="@+id/profile_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
                 android:background="#fff"
                 android:paddingBottom="20dp">
 
@@ -39,8 +43,7 @@
                     android:paddingTop="20dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/user_profile_photo"
-                    android:text="Sherlock Holmes"
-                    android:textColor="#fff"
+                    android:text="Napoli Pizza"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -51,23 +54,91 @@
                     android:layout_below="@+id/user_profile_name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="12dp"
-                    android:text="getsherlocked@gmail.com"
-                    android:textColor="#fff"
+                    android:text="200 ₹"
                     android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/profile_layout"
+                android:id="@+id/select_options"
+                android:background="#fff">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#e6e6e6"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.15"
+                            android:src="@drawable/share"
+                            android:background="#fff"/>
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:background="#fff"
+                            android:textColor="#000"
+                            android:layout_marginRight="0.5dp"
+                            android:textAlignment="textStart"
+                            android:id="@+id/share_item"
+                            android:text="   Share"
+                            android:layout_toRightOf="@+id/week"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.15"
+                            android:layout_marginLeft="0.5dp"
+                            android:src="@drawable/bookmark"
+                            android:background="#fff"/>
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_weight="0.8"
+                            android:layout_height="wrap_content"
+                            android:text="Add to Favorites"
+                            android:textAlignment="textStart"
+                            android:textColor="#000"
+                            android:background="#fff"
+                            android:id="@+id/add_wish"/>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
             </RelativeLayout>
 
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_layout"
+                android:layout_below="@+id/select_options"
                 android:padding="5dp"
+                android:layout_marginTop="-4dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:orientation="vertical"
                     android:background="#fff"
                     >
@@ -107,15 +178,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:background="#fff"
+                    android:layout_marginBottom="20dp"
                     >
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="10dp"
-                        android:text="Working Designation"
+                        android:text="Ingredients"
                         android:textSize="15dp"
                         android:textStyle="bold"
                         android:textColor="#000"/>
@@ -134,122 +206,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Consulting Detective - Self Invented Job Also work at Chief Chemist at Institute of Chemical and Technology Mumbai"
+                        android:text="Bleached wheat flour, Partially Hydrogenated Soyabean Oil, Smoked chicken, Jalapeños, Rocket leaves, Mozzarella Cheese,
+                        Dehydrated Garlic, Black Pepper, Dehydrated Onion, Whole Basil,"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:textSize="15dp"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp"
-                    android:background="#fff"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="10dp"
-                        android:text="Bank Details"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="#000"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="5dp"
-                        android:background="#4a5a71">
-                    </LinearLayout>
-                    <TextView
-                        android:id="@+id/bank_tv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="State Bank of India - Delhi University \r\n 351XXXXXXXXX123 \r\n DU12345 224001"
-                        android:textSize="15dp"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp"
-                    android:background="#fff"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="10dp"
-                        android:text="Identity Details"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="#000"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="5dp"
-                        android:background="#4a5a71">
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/id_tv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text=" PAN - QWERTY123ASE3456 \r\n Aadhar Number - QWERTY2345ASDF"
-                        android:textSize="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="#fff"
-                    android:layout_marginTop="5dp"
-                    >
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="10dp"
-                        android:text="Vehicle Details"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="#000"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="5dp"
-                        android:background="#4a5a71">
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/vehicle_tv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:layout_marginStart="20dp"
-                        android:text="SBA 1234 India /r/n Mileage (ARAI)‎: ‎20.4kmplFuel credit card offersAd	/r/n Fuel Type‎: ‎PetrolSeating Capacity‎: ‎5 Person	Power Windows‎: ‎Front and Rear"
                         android:textSize="15dp"
                         />
                 </LinearLayout>
