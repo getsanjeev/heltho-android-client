@@ -261,9 +261,17 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="0.5dp">
+                        android:layout_weight="1">
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:rotation="90"
+                            android:id="@+id/graph_ratings">
+
+                        </com.github.mikephil.charting.charts.BarChart>
+
                     </LinearLayout>
+
                 </LinearLayout>
 
                 <Button
