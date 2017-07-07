@@ -80,6 +80,35 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="0.5dp"
+                        android:background="#fff"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.15"
+                            android:layout_marginLeft="5dp"
+                            android:src="@drawable/view_details"
+                            android:background="#fff"/>
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:background="#fff"
+                            android:textColor="#000"
+                            android:layout_marginLeft="10dp"
+                            android:textAlignment="textStart"
+                            android:id="@+id/view_calorie_content"
+                            android:text="Details"
+                            android:layout_toRightOf="@+id/week"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0.5dp"
+                        android:layout_marginRight="0.5dp"
                         android:background="#fff"
                         android:orientation="horizontal">
                         <ImageView
@@ -102,29 +131,32 @@
                             android:layout_toRightOf="@+id/week"/>
                     </LinearLayout>
 
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:layout_marginLeft="0.5dp"
                         android:layout_height="wrap_content"
+                        android:background="#fff"
                         android:orientation="horizontal">
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.15"
-                            android:layout_marginLeft="0.5dp"
+                            android:layout_weight="0.2"
+                            android:layout_marginStart="5dp"
                             android:src="@drawable/bookmark"
                             android:background="#fff"/>
                         <Button
                             android:layout_width="0dp"
                             android:layout_weight="0.8"
                             android:layout_height="wrap_content"
-                            android:text="Add to Favorites"
+                            android:text="Bookmark"
+                            android:layout_marginLeft="5dp"
                             android:textAlignment="textStart"
                             android:textColor="#000"
                             android:background="#fff"
                             android:id="@+id/add_wish"/>
                     </LinearLayout>
-
 
 
                 </LinearLayout>
@@ -265,7 +297,7 @@
                     android:text="4.2★"
                     android:textSize="30dp"
                     android:textAlignment="center"
-                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
                     android:layout_below="@+id/lll"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="15dp"
@@ -284,7 +316,7 @@
                     android:textStyle="bold" />
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="20dp"
                     android:layout_below="@id/review_btn"
                     >
                 </LinearLayout>
