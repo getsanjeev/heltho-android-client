@@ -1,5 +1,6 @@
 package com.example.sherlock.heltho.dashboard;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,10 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.renderer.BarChartRenderer;
+import com.github.mikephil.charting.renderer.DataRenderer;
+import com.github.mikephil.charting.renderer.Renderer;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
@@ -77,37 +82,33 @@ public class oneDishParticulars extends AppCompatActivity {
 
     void setRatingChart(){
 
-//        chart.getXAxis().setCenterAxisLabels(false);
-//        chart.getXAxis().setDrawGridLines(false);
-//        chart.getXAxis().setDrawLabels(false);
         chart.getLegend().setEnabled(false);
         chart.getXAxis().setEnabled(false);
         chart.getAxisLeft().setEnabled(false);
         chart.getAxisRight().setEnabled(false);
         chart.setTouchEnabled(false);
-        chart.setDrawingCacheBackgroundColor(getResources().getColor(R.color.colorPrimary));
         Description ds = new Description();
         ds.setText("");
         chart.setDescription(ds);
-
-
-
         List<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(0f, 30f, "5★"));
+        entries.add(new BarEntry(7f, 30f, "6★"));
         entries.add(new BarEntry(1f, 80f, "4★"));
         entries.add(new BarEntry(2f, 60f, "3★"));
         entries.add(new BarEntry(3f, 50f, "2★"));
         entries.add(new BarEntry(4f, 70f, "1★"));
-
+        entries.add(new BarEntry(5f, 60f, "0★"));
+        entries.add(new BarEntry(6f, 50f, "-1★"));
         BarDataSet set = new BarDataSet(entries,"User Ratings");
+        set.setColor(getResources().getColor(R.color.colorPrimary));
         BarData data = new BarData(set);
-        data.setBarWidth(0.5f);
+        data.setBarWidth(0.3f);
         data.setValueFormatter(new IValueFormatter() {
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
                 return entry.getData().toString();
             }
         });
+
 
 
         chart.setData(data);

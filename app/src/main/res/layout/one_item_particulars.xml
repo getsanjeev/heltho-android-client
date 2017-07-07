@@ -13,6 +13,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:background="#e6e6e6">
 
             <RelativeLayout
@@ -181,7 +182,6 @@
                     android:orientation="vertical"
                     android:layout_marginTop="5dp"
                     android:background="#fff"
-                    android:layout_marginBottom="20dp"
                     >
                     <TextView
                         android:layout_width="match_parent"
@@ -218,70 +218,47 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/description"
                 android:layout_margin="5dp"
-                android:background="#fff"
-                android:layout_marginBottom="20dp">
+                android:background="#fff">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ratings $ Reviews"
-                    android:id="@+id/rate"/>
-                <LinearLayout
+                    android:layout_margin="5dp"
+                    android:id="@+id/rate"
+                    android:padding="5dp"
+                    android:text="User Ratings $ Reviews"
+                    android:textSize="15dp"
+                    android:textColor="#303F9F"/>
+
+                <com.github.mikephil.charting.charts.BarChart
                     android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/rate"
+                    android:id="@+id/graph_ratings">
+                </com.github.mikephil.charting.charts.BarChart>
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/main_content_ratings"
-                    android:layout_marginRight="0.5dp"
-                    android:layout_below="@+id/rate">
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4.2"
-                                android:textSize="30dp"
-                                android:id="@+id/star_val"
-                                android:textColor="#000"
-                                />
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_below="@id/star_val"
-                                android:src="@drawable/star"/>
-                        </RelativeLayout>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-                        <com.github.mikephil.charting.charts.BarChart
-                            android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:rotation="90"
-                            android:id="@+id/graph_ratings">
-
-                        </com.github.mikephil.charting.charts.BarChart>
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                    android:text="4.2★"
+                    android:textSize="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/graph_ratings"
+                    android:id="@+id/star_val"
+                    android:textColor="#000" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/main_content_ratings"
+                    android:layout_below="@+id/star_val"
                     android:text="Rate and write a review"
                     android:textColor="#000"
                     android:elevation="5dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
             </RelativeLayout>
 
         </RelativeLayout>
