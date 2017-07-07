@@ -91,13 +91,11 @@ public class oneDishParticulars extends AppCompatActivity {
         ds.setText("");
         chart.setDescription(ds);
         List<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(7f, 30f, "6★"));
+        entries.add(new BarEntry(0f, 60f, "5★"));
         entries.add(new BarEntry(1f, 80f, "4★"));
-        entries.add(new BarEntry(2f, 60f, "3★"));
-        entries.add(new BarEntry(3f, 50f, "2★"));
-        entries.add(new BarEntry(4f, 70f, "1★"));
-        entries.add(new BarEntry(5f, 60f, "0★"));
-        entries.add(new BarEntry(6f, 50f, "-1★"));
+        entries.add(new BarEntry(2f, 50f, "3★"));
+        entries.add(new BarEntry(3f, 70f, "2★"));
+        entries.add(new BarEntry(4f, 50f, "1★"));
         BarDataSet set = new BarDataSet(entries,"User Ratings");
         set.setColor(getResources().getColor(R.color.colorPrimary));
         BarData data = new BarData(set);

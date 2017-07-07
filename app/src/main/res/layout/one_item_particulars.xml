@@ -80,11 +80,13 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:background="#fff"
                         android:orientation="horizontal">
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.12"
+                            android:layout_weight="0.10"
+                            android:layout_marginLeft="10dp"
                             android:src="@drawable/share"
                             android:background="#fff"/>
                         <Button
@@ -218,9 +220,12 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/description"
-                android:layout_margin="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
                 android:background="#fff">
                 <TextView
                     android:layout_width="match_parent"
@@ -232,10 +237,25 @@
                     android:textSize="15dp"
                     android:textColor="#303F9F"/>
 
-                <com.github.mikephil.charting.charts.BarChart
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="1dp"
+                    android:orientation="horizontal"
                     android:layout_below="@+id/rate"
+                    android:id="@+id/lll"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="#4a5a71">
+                </LinearLayout>
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:layout_width="100dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="-40dp"
+                    android:rotation="90"
+                    android:layout_marginLeft="50dp"
+                    android:layout_below="@+id/lll"
                     android:id="@+id/graph_ratings">
                 </com.github.mikephil.charting.charts.BarChart>
 
@@ -243,21 +263,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4.2★"
-                    android:textSize="20dp"
+                    android:textSize="30dp"
+                    android:textAlignment="center"
                     android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/graph_ratings"
+                    android:layout_below="@+id/lll"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
                     android:id="@+id/star_val"
                     android:textColor="#000" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/star_val"
                     android:text="Rate and write a review"
                     android:textColor="#000"
+                    android:layout_marginTop="-40dp"
+                    android:layout_below="@+id/graph_ratings"
+                    android:id="@+id/review_btn"
                     android:elevation="5dp"
                     android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/review_btn"
+                    >
+                </LinearLayout>
 
             </RelativeLayout>
 
