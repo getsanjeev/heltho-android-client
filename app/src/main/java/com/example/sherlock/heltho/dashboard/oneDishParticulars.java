@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+
 import com.example.sherlock.heltho.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -41,6 +44,7 @@ public class oneDishParticulars extends AppCompatActivity {
     Button details;
     Button share;
     Button bookmark;
+    Button rateReview;
     private static final String GOOGLE_PLAY_LINK_ITEM = "https://play.google.com/store/apps/details?id=com.plumbum.aapu.household&hl=en";
 
     @Override
@@ -51,6 +55,7 @@ public class oneDishParticulars extends AppCompatActivity {
         details  = (Button)findViewById(R.id.view_calorie_content);
         share = (Button) findViewById(R.id.share_item);
         bookmark = (Button)findViewById(R.id.add_wish);
+        rateReview =(Button)findViewById(R.id.review_btn);
         Slidr.attach(this);
         SlidrConfig config = new SlidrConfig.Builder()
                 .primaryColor(getResources().getColor(R.color.colorPrimary))
@@ -79,7 +84,44 @@ public class oneDishParticulars extends AppCompatActivity {
                 create_calorie_dialog();
             }
         });
+        rateReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRatingDialog();
+            }
+        });
         setRatingChart();
+    }
+
+    private void showRatingDialog(){
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.calorie_content, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setView(promptsView);
+        // create alert dialog
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        RatingBar Rbar = (RatingBar)promptsView.findViewById(R.id.rating_bar);
+        final EditText review = (EditText)promptsView.findViewById(R.id.user_review);
+        Button send_review_btn = (Button)promptsView.findViewById(R.id.send_review);
+        send_review_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String reviews = review.getText().toString();
+
+            }
+        });
+        Rbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                sendRatings(rating);
+            }
+        });
+        alertDialog.show();
+    }
+
+    private void sendRatings(Float rating){
+
     }
 
     private void bookmarkItem(){
