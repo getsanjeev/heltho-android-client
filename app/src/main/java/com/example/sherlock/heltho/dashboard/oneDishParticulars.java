@@ -1,22 +1,32 @@
 package com.example.sherlock.heltho.dashboard;
 
-import android.graphics.Canvas;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import com.example.sherlock.heltho.R;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IValueFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.renderer.BarChartRenderer;
-import com.github.mikephil.charting.renderer.DataRenderer;
-import com.github.mikephil.charting.renderer.Renderer;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
@@ -33,13 +43,17 @@ import java.util.List;
 public class oneDishParticulars extends AppCompatActivity {
 
     BarChart chart;
-
+    Button details;
+    Button share;
+    Button bookmark;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.one_item_particulars);
         chart = (BarChart)findViewById(R.id.graph_ratings);
+        details  = (Button)findViewById(R.id.view_calorie_content);
+        share = (Button) findViewById(R.id.share_item);
         Slidr.attach(this);
         SlidrConfig config = new SlidrConfig.Builder()
                 .primaryColor(getResources().getColor(R.color.colorPrimary))
@@ -77,11 +91,46 @@ public class oneDishParticulars extends AppCompatActivity {
                                 .build();
 
         Slidr.attach(this, config);
+        details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create_calorie_dialog();
+            }
+        });
         setRatingChart();
     }
 
-    void setRatingChart(){
+    public void create_calorie_dialog() {
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.calorie_content, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setView(promptsView);
+        // create alert dialog
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        PieChart pie = (PieChart)promptsView.findViewById(R.id.fat_protein);
+        pie.setUsePercentValues(true);
+        pie.getLegend().setEnabled(false);
+        Description ds = new Description();
+        ds.setText("");
+        pie.setDescription(ds);
+        List<PieEntry> entry = new ArrayList<>();
+        entry.add(new PieEntry(2f,"Protein"));
+        entry.add(new PieEntry(4f,"Carbohydrates"));
+        entry.add(new PieEntry(1f,"Fats"));
+        entry.add(new PieEntry(3f,"Vitamin"));
+        entry.add(new PieEntry(0.5f,"Iron"));
+        PieDataSet set = new PieDataSet(entry,"");
+        set.setValueFormatter(new PercentFormatter());
+        set.setColors(ColorTemplate.COLORFUL_COLORS);
+        PieData piData = new PieData(set);
+        pie.setData(piData);
+        alertDialog.show();
+    }
 
+
+    private void setRatingChart(){
         chart.getLegend().setEnabled(false);
         chart.getXAxis().setEnabled(false);
         chart.getAxisLeft().setEnabled(false);
@@ -100,6 +149,9 @@ public class oneDishParticulars extends AppCompatActivity {
         set.setColor(getResources().getColor(R.color.colorPrimary));
         BarData data = new BarData(set);
         data.setBarWidth(0.3f);
+        chart.setData(data);
+        chart.setFitBars(true); // make the x-axis fit exactly all bars
+        chart.invalidate(); // refresh
         data.setValueFormatter(new IValueFormatter() {
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
@@ -107,11 +159,6 @@ public class oneDishParticulars extends AppCompatActivity {
             }
         });
 
-
-
-        chart.setData(data);
-        chart.setFitBars(true); // make the x-axis fit exactly all bars
-        chart.invalidate(); // refresh
     }
 
 }
