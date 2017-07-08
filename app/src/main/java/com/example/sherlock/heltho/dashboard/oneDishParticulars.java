@@ -1,18 +1,14 @@
 package com.example.sherlock.heltho.dashboard;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
 import com.example.sherlock.heltho.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -30,7 +26,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
-import com.r0adkll.slidr.model.SlidrListener;
 import com.r0adkll.slidr.model.SlidrPosition;
 
 import java.util.ArrayList;
@@ -46,6 +41,7 @@ public class oneDishParticulars extends AppCompatActivity {
     Button details;
     Button share;
     Button bookmark;
+    private static final String GOOGLE_PLAY_LINK_ITEM = "https://play.google.com/store/apps/details?id=com.plumbum.aapu.household&hl=en";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +50,7 @@ public class oneDishParticulars extends AppCompatActivity {
         chart = (BarChart)findViewById(R.id.graph_ratings);
         details  = (Button)findViewById(R.id.view_calorie_content);
         share = (Button) findViewById(R.id.share_item);
+        bookmark = (Button)findViewById(R.id.add_wish);
         Slidr.attach(this);
         SlidrConfig config = new SlidrConfig.Builder()
                 .primaryColor(getResources().getColor(R.color.colorPrimary))
@@ -67,30 +64,15 @@ public class oneDishParticulars extends AppCompatActivity {
                                 .distanceThreshold(0.25f)
                                 .edge(true)
                                 .edgeSize(0.18f) // The % of the screen that counts as the edge, default 18%
-                                .listener(new SlidrListener(){
-                                    @Override
-                                    public void onSlideStateChanged(int state) {
-
-                                    }
-
-                                    @Override
-                                    public void onSlideChange(float percent) {
-
-                                    }
-
-                                    @Override
-                                    public void onSlideOpened() {
-
-                                    }
-
-                                    @Override
-                                    public void onSlideClosed() {
-
-                                    }
-                                })
                                 .build();
 
         Slidr.attach(this, config);
+        bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bookmarkItem();
+            }
+        });
         details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +80,14 @@ public class oneDishParticulars extends AppCompatActivity {
             }
         });
         setRatingChart();
+    }
+
+    private void bookmarkItem(){
+        Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT,
+                getString(R.string.share_msg) + " " + GOOGLE_PLAY_LINK_ITEM);
+        startActivity(Intent.createChooser(shareIntent, "Share with others"));
     }
 
     public void create_calorie_dialog() {

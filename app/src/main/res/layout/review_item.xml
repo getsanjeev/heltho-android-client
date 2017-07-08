@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:textSize="20dp"
+        android:text="5★"
+        android:id="@+id/rating_user_commentator"
+        android:textColor="#fff"
+        android:background="#3f51b5"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jim Moriarty"
+        android:textSize="20dp"
+        android:id="@+id/name_commentator"
+        android:layout_toRightOf="@+id/rating_user_commentator"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:text="Very good quality and print but made in bangladesh thts a strange fact ,,, 4 star
+"
+        android:layout_below="@id/name_commentator"/>
+
+</RelativeLayout>
