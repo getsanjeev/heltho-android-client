@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RatingBar;
 
 import com.example.sherlock.heltho.R;
+import com.example.sherlock.heltho.utilities.customAdapterForUserRatings;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -45,6 +47,8 @@ public class oneDishParticulars extends AppCompatActivity {
     Button share;
     Button bookmark;
     Button rateReview;
+    Button viewOthersReview;
+    ListView list;
     private static final String GOOGLE_PLAY_LINK_ITEM = "https://play.google.com/store/apps/details?id=com.plumbum.aapu.household&hl=en";
 
     @Override
@@ -56,6 +60,7 @@ public class oneDishParticulars extends AppCompatActivity {
         share = (Button) findViewById(R.id.share_item);
         bookmark = (Button)findViewById(R.id.add_wish);
         rateReview =(Button)findViewById(R.id.review_btn);
+        viewOthersReview = (Button)findViewById(R.id.review_btn_next);
         Slidr.attach(this);
         SlidrConfig config = new SlidrConfig.Builder()
                 .primaryColor(getResources().getColor(R.color.colorPrimary))
@@ -84,6 +89,12 @@ public class oneDishParticulars extends AppCompatActivity {
                 create_calorie_dialog();
             }
         });
+        viewOthersReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchAllReviews();
+            }
+        });
         rateReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,9 +104,35 @@ public class oneDishParticulars extends AppCompatActivity {
         setRatingChart();
     }
 
+    private void launchAllReviews(){
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.others_review, null);
+        list = (ListView)promptsView.findViewById(R.id.list_of_reviews);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setView(promptsView);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        String [] users = new String[7];
+        String [] reviews = new String[7];
+        float [] ratings = new float[7];
+        for(int i=0;i<7;i++){
+            users[i] = "Jim Moriarty";
+            reviews[i] = "Tried this place just because of his catchy name the Kopper kadai First thought which came in our mind that we will gonna have something ery intresting in the kadai of Kopper. Talking about the ambience: Palace is good with amazing ambience and interiors";
+            ratings[i] = new Float(4.3);
+        }
+        for(int i=0;i<7;i++){
+            users[i] = "James Watson";
+            reviews[i] = " Despite the name, I decided to give this place a shot for a special occasion. Found the cake to be really good and so was the delivery timing.";
+            ratings[i] = new Float(4.3);
+            i++;
+        }
+        list.setAdapter(new customAdapterForUserRatings(this,users,reviews,ratings));
+        alertDialog.show();
+    }
+
     private void showRatingDialog(){
         LayoutInflater li = LayoutInflater.from(this);
-        View promptsView = li.inflate(R.layout.calorie_content, null);
+        View promptsView = li.inflate(R.layout.user_ratings_reviews, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
         alertDialogBuilder.setView(promptsView);
@@ -108,13 +145,15 @@ public class oneDishParticulars extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String reviews = review.getText().toString();
-
+                alertDialog.dismiss();
             }
         });
+
         Rbar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 sendRatings(rating);
+                alertDialog.dismiss();
             }
         });
         alertDialog.show();

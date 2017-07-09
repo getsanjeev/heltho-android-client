@@ -314,10 +314,21 @@
                     android:id="@+id/review_btn"
                     android:elevation="5dp"
                     android:textStyle="bold" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="See others Reviews"
+                    android:textColor="#000"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/review_btn"
+                    android:id="@+id/review_btn_next"
+                    android:elevation="5dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_below="@id/review_btn"
+                    android:layout_below="@id/review_btn_next"
                     >
                 </LinearLayout>
 
