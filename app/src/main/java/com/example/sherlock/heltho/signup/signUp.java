@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.sherlock.heltho.R;
+import com.example.sherlock.heltho.dashboard.emailPage;
 import com.example.sherlock.heltho.dashboard.userDashboard;
 import com.example.sherlock.heltho.service.retrofit_service;
 import okhttp3.Response;
@@ -26,9 +27,11 @@ public class signUp extends AppCompatActivity {
     private EditText email_mob_et;
     private EditText password_et;
     private EditText cnfm_password_et;
+    private EditText user_name;
     private String contactNumberEmail;
     private String passwordUser;
     private String cnfmPasswordUser;
+    private String userName;
     private Button register_btn;
     private ProgressDialog dialog;
 
@@ -39,6 +42,7 @@ public class signUp extends AppCompatActivity {
         email_mob_et = (EditText) findViewById(R.id.email_edit);
         password_et = (EditText) findViewById(R.id.pass_edit);
         cnfm_password_et = (EditText) findViewById(R.id.cnfmpass_edit);
+        user_name = (EditText) findViewById(R.id.user);
         register_btn = (Button) findViewById(R.id.sign_up);
         dialog = new ProgressDialog(signUp.this);
         dialog.setMessage("Loading...");
@@ -48,7 +52,7 @@ public class signUp extends AppCompatActivity {
                 dialog.show();
                 //registerUser();
                 dialog.dismiss();
-                startActivity(new Intent(signUp.this,userDashboard.class));
+                startActivity(new Intent(signUp.this,emailPage.class));
             }
         });
     }
@@ -57,17 +61,26 @@ public class signUp extends AppCompatActivity {
 
     public void registerUser() {
         contactNumberEmail = "";
+        userName= "";
         passwordUser = "";
         cnfmPasswordUser = "";
+
+        if (user_name.getText().toString().equals("") ) {
+            Toast.makeText(this, "Invalid Username", Toast.LENGTH_SHORT).show();
+            return;
+        } else userName = user_name.getText().toString();
+
 
         if (email_mob_et.getText().toString().length() < 10) {
             Toast.makeText(this, "Invalid Number", Toast.LENGTH_SHORT).show();
             return;
         } else contactNumberEmail = email_mob_et.getText().toString();
+
         if (password_et.getText().toString().length() < 5) {
             Toast.makeText(this, "Password Too Short", Toast.LENGTH_SHORT).show();
             return;
         } else passwordUser = email_mob_et.getText().toString();
+
         if (!cnfm_password_et.getText().toString().equals(email_mob_et.getText().toString())) {
             Toast.makeText(this, "Password do not match", Toast.LENGTH_SHORT).show();
             return;
@@ -87,7 +100,8 @@ public class signUp extends AppCompatActivity {
                     Toast.makeText(signUp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
-                    editor.putString("user_ID",usedID);
+                    editor.putString("user_ID",email_mob_et.getText().toString());
+                    editor.putString("user_phone",user_name.getText().toString());
                     editor.apply();
                     startActivity(new Intent(signUp.this,otpFragment.class));
                 }

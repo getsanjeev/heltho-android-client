@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
+import com.example.sherlock.heltho.dashboard.emailPage;
 import com.example.sherlock.heltho.data.prefUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
