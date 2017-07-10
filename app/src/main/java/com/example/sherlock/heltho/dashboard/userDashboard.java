@@ -1,4 +1,5 @@
 package com.example.sherlock.heltho.dashboard;
+
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
