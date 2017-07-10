@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="7dp">
 
 
         <ImageView
@@ -17,8 +17,7 @@
             android:layout_height="160dp"
             android:src="@drawable/ad_in_search"
             android:scaleType="fitXY"
-            android:id="@+id/ad_image"
-            />
+            android:id="@+id/ad_image" />
 
 
         <LinearLayout
@@ -26,13 +25,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:id="@+id/block1"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_below="@id/ad_image">
 
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:id="@+id/cv1"
                 android:layout_weight="1"
                 >
@@ -40,12 +39,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="7dp"
                     >
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:id="@+id/person_photo1"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -60,7 +59,8 @@
                         android:text="Pasta"
                         android:layout_toRightOf="@+id/person_photo1"
                         android:layout_alignParentTop="true"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
+                        android:textColor="#000"
                         />
 
                     <TextView
@@ -84,19 +84,19 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:layout_weight="1"
                 android:id="@+id/cv2">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="7dp"
                     >
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:id="@+id/person_photo2"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -108,10 +108,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/person_name2"
-                        android:text="Pasta"
+                        android:text="Pizza"
                         android:layout_toRightOf="@+id/person_photo2"
                         android:layout_alignParentTop="true"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
+                        android:textColor="#000"
                         />
 
                     <TextView
@@ -139,7 +140,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:id="@+id/cv3"
                 android:layout_weight="1"
                 >
@@ -147,12 +148,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="7dp"
                     >
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:id="@+id/person_photo3"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -164,10 +165,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/person_name3"
-                        android:text="Pasta"
+                        android:text="Burger"
                         android:layout_toRightOf="@+id/person_photo3"
                         android:layout_alignParentTop="true"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
+                        android:textColor="#000"
                         />
 
                     <TextView
@@ -175,7 +177,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/person_age3"
                         android:layout_toRightOf="@+id/person_photo3"
-                        android:text="Italian"
+                        android:text="Portuguese"
+                        android:textSize="10dp"
                         android:layout_below="@+id/person_name3"
                         />
 
@@ -191,19 +194,19 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:layout_weight="1"
                 android:id="@+id/cv4">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="7dp"
                     >
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:id="@+id/person_photo4"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -215,10 +218,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/person_name4"
-                        android:text="Pasta"
+                        android:text="Sandwich"
                         android:layout_toRightOf="@+id/person_photo4"
                         android:layout_alignParentTop="true"
-                        android:textSize="20dp"
+                        android:textSize="13dp"
+                        android:textColor="#000"
                         />
 
                     <TextView
@@ -226,7 +230,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/person_age4"
                         android:layout_toRightOf="@+id/person_photo4"
-                        android:text="Italian"
+                        android:text="English"
                         android:layout_below="@+id/person_name4"
                         />
 
@@ -246,7 +250,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:id="@+id/cv5"
                 android:layout_weight="1"
                 >
@@ -254,12 +258,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="7dp"
                     >
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:id="@+id/person_photo5"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -271,10 +275,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/person_name5"
-                        android:text="Pasta"
+                        android:text="Beverages"
                         android:layout_toRightOf="@+id/person_photo5"
                         android:layout_alignParentTop="true"
-                        android:textSize="20dp"
+                        android:textSize="13dp"
+                        android:textColor="#000"
                         />
 
                     <TextView
@@ -298,19 +303,19 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:layout_weight="1"
                 android:id="@+id/cv6">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="7dp"
                     >
 
                     <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:id="@+id/person_photo6"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -322,10 +327,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/person_name6"
-                        android:text="Pasta"
+                        android:text="Chowmein"
                         android:layout_toRightOf="@+id/person_photo6"
                         android:layout_alignParentTop="true"
-                        android:textSize="20dp"
+                        android:textSize="13dp"
+                        android:textColor="#000"
                         />
 
                     <TextView
@@ -333,7 +339,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/person_age6"
                         android:layout_toRightOf="@+id/person_photo6"
-                        android:text="Italian"
+                        android:text="Chinese"
                         android:layout_below="@+id/person_name6"
                         />
 
