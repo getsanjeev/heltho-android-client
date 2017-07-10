@@ -87,8 +87,7 @@ public class signUp extends AppCompatActivity {
                     Toast.makeText(signUp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                     SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
-                    editor.putString("userID",usedID);
-                    editor.putString("userPassword",password);
+                    editor.putString("user_ID",usedID);
                     editor.apply();
                     startActivity(new Intent(signUp.this,otpFragment.class));
                 }

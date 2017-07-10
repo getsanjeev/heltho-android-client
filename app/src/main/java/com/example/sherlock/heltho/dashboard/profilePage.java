@@ -3,6 +3,7 @@ package com.example.sherlock.heltho.dashboard;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
@@ -38,6 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by sherlock on 30/5/17.
@@ -92,14 +94,10 @@ public class profilePage extends Fragment implements View.OnClickListener {
 
         edit_dp = (ImageView) view.findViewById(R.id.edit_dp);
         user_profile_pic = (CircularImageView) view.findViewById(R.id.user_profile_photo);
-
-        if(!userData.profile_pic_url.equals(null) ){
             Picasso.with(getActivity()).setIndicatorsEnabled(true);
             Picasso.with(getActivity()).load(userData.profile_pic_url).
                     placeholder(R.drawable.com_facebook_profile_picture_blank_portrait)
                     .error(R.drawable.userdp).into(user_profile_pic);
-
-        }
 
         edit_dp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,9 +109,11 @@ public class profilePage extends Fragment implements View.OnClickListener {
     }
 
     public void setProfileInfo(){
-        username.setText(userData.first_name + " " + userData.last_name);
-        userEmailID.setText(userData.email);
-        address_tv.setText(userData.address);
+        SharedPreferences mSharedPreferences = getActivity().getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
+        username.setText(mSharedPreferences.getString("user_first_name","") + " "
+                + mSharedPreferences.getString("user_last_name",""));
+        userEmailID.setText(mSharedPreferences.getString("user_email",""));
+        //address_tv.setText(mSharedPreferences.getString("user_l",""));
         designation_tv.setText("");
         bank_tv.setText("Account number : "+userData.bank_account_no+"\r\n"+
                         "IFSC Code : "+userData.bank_ifsc_cose+"\r\n"+

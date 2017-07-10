@@ -30,6 +30,6 @@ public class userData {
     public static String bank_branch_name;
     public static String bank_branch_code;
     public static String bank_account_holder;
-    public static String profile_pic_url;
+    public static String profile_pic_url = null;
 
 }

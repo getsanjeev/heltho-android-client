@@ -233,4 +233,3 @@ public class oneDishParticulars extends AppCompatActivity {
     }
 
 }
-

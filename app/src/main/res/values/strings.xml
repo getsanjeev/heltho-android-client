@@ -3,7 +3,6 @@
     <string name="facebook_app_id">233723523802553</string>
     <string name="fb_login_protocol_scheme">fb233723523802553</string>
     <string name="title_activity_user_dashboard">userDashboard</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="share_msg">Hey signUp for Heltho and have a healthy lifestyle</string>

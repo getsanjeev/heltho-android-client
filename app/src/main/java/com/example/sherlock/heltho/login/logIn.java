@@ -39,9 +39,15 @@ public class logIn extends AppCompatActivity {
     private TextView signUp_btn;
     private Button zipLogIn_btn;
     ProgressDialog progressDialog;
-    userData myUserData;
     private EditText userID_et;
     private EditText userPassword_et;
+
+    String id;
+    String first_name;
+    String last_name;
+    String email;
+    String dob;
+    String profilePicUrl;
 
 
     @Override
@@ -69,7 +75,6 @@ public class logIn extends AppCompatActivity {
         zipLogIn_btn = (Button) findViewById(R.id.login);
         fbloginButton.setReadPermissions("public_profile", "email","user_birthday","user_relationships","user_photos");
         signUp_btn = (TextView) findViewById(R.id.sign_up_in_login_layout);
-
         signUp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,25 +129,28 @@ public class logIn extends AppCompatActivity {
                             //Date my_date = AccessToken.getCurrentAccessToken().getExpires();
                             response.toString();
                             try {
-                                String id = object.getString("id");
-                                String first_name = object.getString("first_name");
-                                String last_name = object.getString("last_name");
-                                String email = object.getString("email");
-                                String dob = object.getString("birthday");
-                                userData.first_name = first_name;
-                                userData.last_name = last_name;
-                                userData.facebookID = id;
-                                userData.email = email;
-                                userData.dob = dob;
-                                String profilePicUrl = "https://graph.facebook.com/"+id+"/picture?width=200&height=200";
-                                userData.profile_pic_url = profilePicUrl;
+                                id = object.getString("id");
+                                first_name = object.getString("first_name");
+                                last_name = object.getString("last_name");
+                                email = object.getString("email");
+                                dob = object.getString("birthday");
+                                profilePicUrl = "https://graph.facebook.com/"+id+"/picture?width=200&height=200";
+                                SharedPreferences mmSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
+                                SharedPreferences.Editor editor = mmSharedPreferences.edit();
+                                editor.putString("user_ID",id);
+                                editor.putString("user_first_name",first_name);
+                                editor.putString("user_last_name",last_name);
+                                editor.putString("user_email",email);
+                                editor.putString("user_DOB",dob);
+                                editor.putString("user_profile_picture",profilePicUrl);
+                                editor.apply();
 
                             } catch (Exception e) {
                                 e.getClass().getSimpleName();
                                 e.printStackTrace();
                                 Log.e("Getting","Exception");
                             }
-                            Toast.makeText(logIn.this, "Welcome " + myUserData.first_name, Toast.LENGTH_LONG).show();
+                            Toast.makeText(logIn.this, "Welcome " + first_name, Toast.LENGTH_LONG).show();
                             setLoggedIn();
                             Intent intent = new Intent(logIn.this, userDashboard.class);
                             startActivity(intent);
@@ -161,13 +169,11 @@ public class logIn extends AppCompatActivity {
         @Override
         public void onCancel() {
             progressDialog.dismiss();
-            Log.e("HEY","cancelled");
         }
 
         @Override
         public void onError(FacebookException error) {
             progressDialog.dismiss();
-            Log.e("hello","nologin");
         }
     };
 }
