@@ -22,10 +22,11 @@ public class splash_screen extends Activity {
             public void run() {
                 try {
                     sleep(3000);
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     e.getStackTrace();
-                } finally {
-                    /*startActivity(new Intent(splash_screen.this,oneDishParticulars.class));*/
+                }
+                finally {
                     SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
                         if (mSharedPreferences.getBoolean("loggedIn", false))
                             startActivity(new Intent(splash_screen.this, userDashboard.class));

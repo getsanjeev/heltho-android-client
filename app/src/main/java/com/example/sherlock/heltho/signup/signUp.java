@@ -71,8 +71,8 @@ public class signUp extends AppCompatActivity {
         } else userName = user_name.getText().toString();
 
 
-        if (email_mob_et.getText().toString().length() < 10) {
-            Toast.makeText(this, "Invalid Number", Toast.LENGTH_SHORT).show();
+        if (!email_mob_et.getText().toString().contains("@") || !email_mob_et.getText().toString().contains(".com")) {
+            Toast.makeText(this, "Invalid Email ID", Toast.LENGTH_SHORT).show();
             return;
         } else contactNumberEmail = email_mob_et.getText().toString();
 

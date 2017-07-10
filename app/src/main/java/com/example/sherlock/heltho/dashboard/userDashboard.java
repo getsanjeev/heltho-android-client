@@ -88,7 +88,7 @@ public class userDashboard extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.home) {
-
+            fragment = new home();
             // Handle the camera action
         } else if (id == R.id.orders) {
 

@@ -115,6 +115,7 @@ public class logIn extends AppCompatActivity {
         SharedPreferences mSharedPreferences = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putBoolean("loggedIn",true);
+        editor.apply();
     }
 
     private FacebookCallback<LoginResult> mCallBack = new FacebookCallback<LoginResult>() {
